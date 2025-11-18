@@ -95,14 +95,23 @@ function App() {
     }, duration + 100);
   }
 
-  function addItem() {
+  async function addItem() {
     const value = window.prompt("Voer een nieuw item in:");
     if (!value) return;
     const trimmed = value.trim();
     if (!trimmed) return;
-    setItems((prev) => [...prev, trimmed]);
-  }
 
+    const { data, error } = await supabase
+      .from("items")
+      .insert({ label: trimmed })
+      .select("label");
+
+    if (!error && data && data[0]) {
+      setItems((prev) => [...prev, data[0].label]);
+    } else {
+      alert("Item kon niet worden opgeslagen.");
+    }
+  }
   return (
     <div id="app">
       <h1>Wat gaan we eten?</h1>
@@ -135,5 +144,6 @@ function App() {
 }
 
 export default App;
+
 
 

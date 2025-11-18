@@ -78,7 +78,6 @@ function App() {
     const duration = 4500;
 
     setTimeout(() => {
-      canvas.style.transform = `rotate(${totalDegrees % 360}deg)`;
       setChosen(items[selectedIndex]);
       setShowResult(true);
       setIsSpinning(false);
@@ -125,3 +124,4 @@ function App() {
 }
 
 export default App;
+

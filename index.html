@@ -1,28 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
   <head>
     <meta charset="UTF-8" />
     <title>Spin The Wheel</title>
-    <link rel="stylesheet" href="style.css" />
   </head>
-    <body>
-        <div id="app">
-            <h1>Wat gaan we eten?</h1>
-            <div id="wheel-card">
-            <div id="wheel-wrapper">
-                <canvas id="wheel" width="450" height="450"></canvas>
-                <div id="pointer"></div>
-            </div>
-            <div id="controls">
-                <button id="spinBtn">Spin the wheel</button>
-            </div>
-            <div id="result" class="hidden">
-                <p>Jouw keuze:</p>
-                <div id="chosen"></div>
-            </div>
-            </div>
-        </div>
-        <button id="addItemBtn">+</button>
-        <script src="script.js"></script>
-    </body>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

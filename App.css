@@ -1,0 +1,211 @@
+:root {
+  --bg: #050816;
+  --bg-card: rgba(15, 23, 42, 0.85);
+  --accent: #38bdf8;
+  --accent-soft: rgba(56, 189, 248, 0.2);
+  --accent-strong: #f97316;
+  --text: #e5e7eb;
+  --text-muted: #9ca3af;
+  --shadow-strong: 0 24px 60px rgba(0, 0, 0, 0.8);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #111827 0, #020617 50%, #000 100%);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+#app {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.4rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 20px;
+  background: linear-gradient(120deg, #e5e7eb, var(--accent), var(--accent-strong));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+#wheel-card {
+  background: var(--bg-card);
+  border-radius: 24px;
+  padding: 24px 28px 30px;
+  box-shadow: var(--shadow-strong);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  backdrop-filter: blur(18px);
+  display: inline-block;
+}
+
+#wheel-wrapper {
+  margin: 10px auto 16px;
+  width: 450px;
+  height: 450px;
+  position: relative;
+}
+
+#wheel {
+  transition: transform 4.5s cubic-bezier(0.16, 0.9, 0.2, 1);
+  border-radius: 50%;
+  box-shadow: 0 0 25px rgba(15, 23, 42, 0.9);
+  background: radial-gradient(circle at 30% 20%, #1e293b 0, #020617 60%);
+}
+
+#pointer {
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-bottom: 32px solid var(--accent-strong);
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 6px rgba(248, 250, 252, 0.6));
+}
+
+#controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+button {
+  padding: 12px 26px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 999px;
+  border: none;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  transition: all 0.18s ease-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#spinBtn {
+  background: radial-gradient(circle at 30% 0, #f97316 0, #ea580c 40%, #c2410c 100%);
+  color: #0f172a;
+  box-shadow: 0 14px 30px rgba(248, 113, 22, 0.5);
+}
+
+#spinBtn:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(248, 113, 22, 0.7);
+  filter: brightness(1.05);
+}
+
+#spinBtn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.7);
+}
+
+#result {
+  margin-top: 24px;
+  padding: 12px 18px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: radial-gradient(circle at top left, var(--accent-soft), transparent 60%);
+}
+
+#result p {
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+#chosen {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+.hidden {
+  display: none;
+}
+
+.glow {
+  animation: glow 1.1s ease-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 8px rgba(56, 189, 248, 0.7),
+      0 0 16px rgba(56, 189, 248, 0.4);
+  }
+  to {
+    text-shadow: 0 0 2px rgba(56, 189, 248, 0.5),
+      0 0 4px rgba(56, 189, 248, 0.2);
+  }
+}
+
+#addItemBtn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: radial-gradient(circle at 30% 0, #22c55e 0, #16a34a 40%, #15803d 100%);
+  color: #0f172a;
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 16px 36px rgba(22, 163, 74, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s ease-out;
+  z-index: 20;
+}
+
+#addItemBtn:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 20px 44px rgba(22, 163, 74, 0.85);
+  filter: brightness(1.05);
+}
+
+#addItemBtn:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 520px) {
+  #wheel-card {
+    padding: 18px;
+  }
+
+  #wheel-wrapper {
+    width: 320px;
+    height: 320px;
+  }
+
+  #wheel {
+    width: 320px;
+    height: 320px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}

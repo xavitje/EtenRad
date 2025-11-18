@@ -3,24 +3,12 @@ import "./App.css";
 import { supabase } from "./supabaseClient";
 
 function App() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(["Pizza", "Hamburger", "Kebab"]);
+
   const [isSpinning, setIsSpinning] = useState(false);
   const [chosen, setChosen] = useState("");
   const [showResult, setShowResult] = useState(false);
   const canvasRef = useRef(null);
-
-  useEffect(() => {
-    async function loadItems() {
-      const { data, error } = await supabase
-        .from("items")
-        .select("label")
-        .order("id", { ascending: true });
-      if (!error && data) {
-        setItems(data.map((row) => row.label));
-      }
-    }
-    loadItems();
-  }, []);
 
   function getRandomColor() {
     return `hsl(${Math.random() * 360}, 80%, 55%)`;
@@ -144,6 +132,3 @@ function App() {
 }
 
 export default App;
-
-
-
